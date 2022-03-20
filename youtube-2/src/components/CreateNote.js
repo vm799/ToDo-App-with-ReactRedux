@@ -1,14 +1,19 @@
 import React from 'react'
 import { useState } from 'react'
 
-const CreateNote = () => {
+const CreateNote = ({createNote}) => {
 const [note, setNote] = useState("") 
 
 const handleSubmit = (e) => {
     e.preventDefault()
-    const data = {note}
-    console.log(data)
+    const data = {
+        note,
+    id:Math.floor(Math.random() *500),
+    date: new Date().toJSON().slice(0,10),
+    isImportant: false}
+    createNote(data)
 }
+
   return(
     <div> 
         <form onSubmit= {handleSubmit}> 
@@ -21,7 +26,7 @@ const handleSubmit = (e) => {
           onChange={ e => setNote(e.target.value)}
           >
               </textarea>
-              <button class="btn" type="submit">Add Note</button>
+              <button className="btn" type="submit">Add Note</button>
               </div>
   </form>
     </div>
