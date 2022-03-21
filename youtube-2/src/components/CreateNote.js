@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 
-const CreateNote = ({createNote}) => {
+import { store } from '../redux/store'
+
+const CreateNote = () => {
 const [note, setNote] = useState("") 
 
 const handleSubmit = (e) => {
@@ -10,8 +12,13 @@ const handleSubmit = (e) => {
         note,
     id:Math.floor(Math.random() *500),
     date: new Date().toJSON().slice(0,10),
-    isImportant: false}
-    createNote(data)
+    isImportant: false
+  }
+   
+    store.dispatch({
+      type:'ADD_NOTE',
+      payload: data
+    })
 }
 
   return(

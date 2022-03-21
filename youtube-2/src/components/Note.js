@@ -5,7 +5,7 @@ const Note  = ({note: { date, note, id, isImportant }, toggle_note }) => {
     <div className= "card m-3"> 
         <div className="card-header">{date}</div>
         <div className="card-body">{note}</div>
-        <button onClick = {() => toggle_note(id)} className="btn"> {isImportant? 'Remove from Important' : 'Add'} </button>
+        <button onClick = {() => toggle_note(id)} className="btn mb-2"> {isImportant? 'Remove from Important' : 'Add'} </button>
     </div>
   )
 }
