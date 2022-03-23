@@ -1,36 +1,58 @@
+import { ADD_NOTE, TOGGLE_NOTE, LOAD_NOTES, SET_LOADER } from "../types";
+
 
 const initialState = {
-    notes:[{
-        id:1,
-        date:'25/12/20',
-        isImportant:false,
-        note:'I am a note 1'
-    },
-
-    {
-        id:2,
-        date:'25/12/20',
-        isImportant:false,
-        note:'I am a note 2'
-    },
-    {
-        id:3,
-        date:'25/12/20',
-        isImportant:false,
-        note:'I am a note 3'
-    }]
+    notes:[],
+    loading:false
 }
 
 
 const reducer = (previousState = initialState, action)=>{
     const { type, payload } = action;
 
-    switch(type){
-        case "ADD_NOTE":
+switch(type){
+
+    case SET_LOADER:
+        return{
+        ...previousState,
+        loading:true
+    
+        }
+
+
+    case ADD_NOTE:
         return {
             ...previousState,
+            loading:false,
             notes:[...previousState.notes,payload]
         }
+    
+    case TOGGLE_NOTE:
+          const new_notes = previousState.notes.slice()
+          
+          const index = new_notes.findIndex(note => note.id === payload)
+           
+          const note = new_notes[index]
+           
+          const new_note = {
+             ...note,
+             isImportant: !note.isImportant
+                           }
+           new_notes[index] = new_note
+          
+           return {
+               ...previousState,
+               loading:false,
+               notes: new_notes
+           }
+          
+    case LOAD_NOTES:
+            return {
+                ...previousState,
+                loading:false,
+                notes:payload
+            }
+
     default:
         return previousState
     }

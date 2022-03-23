@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { toggle_note } from '../redux/actions/notes.action'
 
 const Note  = ({note: { date, note, id, isImportant }, toggle_note }) => {
   return (
@@ -10,4 +12,4 @@ const Note  = ({note: { date, note, id, isImportant }, toggle_note }) => {
   )
 }
 
-export default Note
+export default connect(null, {toggle_note})(Note)

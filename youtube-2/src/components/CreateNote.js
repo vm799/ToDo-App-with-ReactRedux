@@ -1,24 +1,21 @@
 import React from 'react'
 import { useState } from 'react'
+import { connect } from 'react-redux'
+import { add_new_note } from '../redux/actions/notes.action'
 
-import { store } from '../redux/store'
-
-const CreateNote = () => {
+const CreateNote = ({add_new_note}) => {
 const [note, setNote] = useState("") 
 
 const handleSubmit = (e) => {
     e.preventDefault()
     const data = {
         note,
-    id:Math.floor(Math.random() *500),
-    date: new Date().toJSON().slice(0,10),
-    isImportant: false
+        id:Math.floor(Math.random() *500),
+        date: new Date().toJSON().slice(0,10),
+        isImportant: false
   }
+   add_new_note(data)
    
-    store.dispatch({
-      type:'ADD_NOTE',
-      payload: data
-    })
 }
 
   return(
@@ -40,4 +37,5 @@ const handleSubmit = (e) => {
   )
 }
 
-export default CreateNote
+
+export default connect(null, {add_new_note})(CreateNote)
