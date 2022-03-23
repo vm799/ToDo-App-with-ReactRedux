@@ -1,9 +1,10 @@
 import React from 'react'
 import Note from './Note'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-const AllNotes = ({ toggle_note, notes}) => {
+const AllNotes = () => {
 
+   const notes = useSelector(state => state.notes_reducer.notes)
 // const notes = store.getState().notes
 
   return (
@@ -17,8 +18,10 @@ const AllNotes = ({ toggle_note, notes}) => {
     </div>
         )}
 
-const mapStateToProps = state =>({
-    notes: state.notes_reducer.notes
-})
+// const mapStateToProps = state =>({
+//     notes: state.notes_reducer.notes
+// })
 
-export default connect(mapStateToProps)(AllNotes)
+// export default connect(mapStateToProps)(AllNotes)
+
+export default AllNotes
