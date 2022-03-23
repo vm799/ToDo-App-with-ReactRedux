@@ -32,7 +32,10 @@ const handleSubmit = (e) => {
           onChange={ e => setNote(e.target.value)}
           >
               </textarea>
+              <div className="button_container">
               <button className="btn" type="submit">Add Note</button>
+              <button className="btn btn_delete" type="submit">Clear All Notes</button>
+              </div>
               </div>
   </form>
     </div>
