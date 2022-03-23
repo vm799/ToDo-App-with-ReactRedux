@@ -27,24 +27,24 @@ switch(type){
             notes:[...previousState.notes,payload]
         }
     
-    case TOGGLE_NOTE:
-          const new_notes = previousState.notes.slice()
+    // case TOGGLE_NOTE:
+    //       const new_notes = previousState.notes.slice()
           
-          const index = new_notes.findIndex(note => note.id === payload)
+    //       const index = new_notes.findIndex(note => note.id === payload)
            
-          const note = new_notes[index]
+    //       const note = new_notes[index]
            
-          const new_note = {
-             ...note,
-             isImportant: !note.isImportant
-                           }
-           new_notes[index] = new_note
+    //       const new_note = {
+    //          ...note,
+    //          isImportant: !note.isImportant
+    //                        }
+    //        new_notes[index] = new_note
           
-           return {
-               ...previousState,
-               loading:false,
-               notes: new_notes
-           }
+    //        return {
+    //            ...previousState,
+    //            loading:false,
+    //            notes: new_notes
+    //        }
           
     case LOAD_NOTES:
             return {

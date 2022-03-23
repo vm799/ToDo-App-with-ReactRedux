@@ -1,6 +1,6 @@
 
 import { db } from "../../firebase";
-import { ADD_NOTE, TOGGLE_NOTE, LOAD_NOTES, SET_LOADER } from "../types";
+import { ADD_NOTE,  LOAD_NOTES, SET_LOADER } from "../types";
 
 
 export const add_new_note = (data) => async(dispatch) => { 
@@ -38,11 +38,9 @@ export const toggle_note = (id) => async dispatch => {
         await snapshot.update({
             isImportant: !data.isImportant
         })
-
-dispatch({
-        type: TOGGLE_NOTE,
-        payload:id
-        })
+        
+        dispatch(load_notes()) 
+ 
 
      }  catch(error){
         console.log(error.message)
