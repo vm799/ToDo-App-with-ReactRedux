@@ -14,7 +14,8 @@ const handleSubmit = (e) => {
         note,
         id:Math.floor(Math.random() *500),
         date: new Date().toJSON().slice(0,10),
-        isImportant: false
+        isImportant: false,
+        isComplete:false
   }
    dispatch(add_new_note(data))
    
@@ -34,7 +35,6 @@ const handleSubmit = (e) => {
               </textarea>
               <div className="button_container">
               <button className="btn" type="submit">Add Note</button>
-              <button className="btn btn_delete" type="submit">Clear All Notes</button>
               </div>
               </div>
   </form>
