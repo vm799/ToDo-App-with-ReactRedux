@@ -12,7 +12,7 @@ const AllNotes = () => {
         <h5> All Notes </h5>
     <div className="row">       
         {
-            notes.map(note => <Note key={note.id} note ={note}  />)
+            notes.filter(note => note.isComplete === false).map(note => <Note key={note.id} note ={note}  />)
         }
        </div>
     </div>

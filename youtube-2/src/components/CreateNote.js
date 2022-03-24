@@ -34,7 +34,7 @@ const handleSubmit = (e) => {
           >
               </textarea>
               <div className="button_container">
-              <button className="btn" type="submit">Add Note</button>
+              <button className="btn" type="submit">Add Note</button> 
               </div>
               </div>
   </form>

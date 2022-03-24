@@ -1,4 +1,4 @@
-import { ADD_NOTE, TOGGLE_NOTE, LOAD_NOTES, SET_LOADER } from "../types";
+import { ADD_NOTE, TOGGLE_NOTE, LOAD_NOTES, SET_LOADER, DELETE_NOTE } from "../types";
 
 
 const initialState = {
@@ -18,7 +18,14 @@ switch(type){
         loading:true
     
         }
-
+    
+    case DELETE_NOTE:
+        return {
+        ...previousState,
+        loading:false,
+        isComplete: true,
+        notes:[...previousState.notes,payload]
+            }
 
     case ADD_NOTE:
         return {
@@ -29,17 +36,12 @@ switch(type){
     
     // case TOGGLE_NOTE:
     //       const new_notes = previousState.notes.slice()
-          
     //       const index = new_notes.findIndex(note => note.id === payload)
-           
     //       const note = new_notes[index]
-           
     //       const new_note = {
     //          ...note,
     //          isImportant: !note.isImportant
-    //                        }
     //        new_notes[index] = new_note
-          
     //        return {
     //            ...previousState,
     //            loading:false,

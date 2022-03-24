@@ -8,7 +8,7 @@ const ImportantNotes = ({ notes }) => {
         <h4>Important Notes </h4>
         <div className="row">
         {
-        notes.filter(note => note.isImportant === true)
+        notes.filter(note => note.isImportant === true && note.isComplete === false)
         .map(note => <Note note={note}  key={note.id} />)
         
         }

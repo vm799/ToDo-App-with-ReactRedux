@@ -19,4 +19,4 @@ const Note  = ({note: { date, note, id, isImportant }, toggle_note, delete_note 
   )
 }
 
-export default connect(null, {toggle_note})(Note)
+export default connect(null, {toggle_note, delete_note})(Note)

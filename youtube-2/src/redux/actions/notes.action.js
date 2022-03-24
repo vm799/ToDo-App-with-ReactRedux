@@ -1,6 +1,27 @@
 
 import { db } from "../../firebase";
-import { ADD_NOTE,  LOAD_NOTES, SET_LOADER, DELETE_NOTE } from "../types";
+import { ADD_NOTE,  LOAD_NOTES, SET_LOADER } from "../types";
+
+export const delete_note = (id) => async(dispatch) => { 
+
+    try {
+        dispatch({
+            type: SET_LOADER
+        })
+
+        const snapshot  =  db.collection('notes').doc(id.toString())
+        const data = (await snapshot.get()).data()
+        
+        await snapshot.update({
+            isComplete: !data.isComplete
+        })
+        
+        dispatch(load_notes()) 
+ 
+
+     }  catch(error){
+        console.log(error.message)
+     }}
 
 
 export const add_new_note = (data) => async(dispatch) => { 
@@ -18,10 +39,7 @@ try{
           })
 } catch(error){
     console.log(error.message)
-}
-  
-    
-}
+}}
 
 export const toggle_note = (id) => async dispatch => {
 
